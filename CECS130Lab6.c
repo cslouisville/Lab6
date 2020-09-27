@@ -14,19 +14,21 @@ struct stPhoneBook
 {
 	char scFirstName[20];
 	char scLastName[20];
-	int iPhoneNum;
+	long long int lliPhoneNum;
+	char scFirstNameD[20];
+	char scLastNameD[20];
 };
 
 //Code for exiting function
 void exiting()
 {
 	printf("\nExiting Phone Book. Goodbye!");	
-}
+}//End of exiting function code
 
 int main() 
 {
 	int iPhoneOp;
-	struct stPhoneBook contact;
+	struct stPhoneBook *aPhoneContact = (struct stPhoneBook *)malloc(sizeof(struct stPhoneBook));
 	int x;
 	
 	do
@@ -39,18 +41,19 @@ int main()
 		{
 			case 1:
 				printf("First Name: ");
-				scanf("%s",contact.scFirstName);
+				scanf("%s",aPhoneContact->scFirstName);
 				printf("Last Name: ");
-				scanf("%s",contact.scLastName);
+				scanf("%s",aPhoneContact->scLastName);
 				printf("Phone Number: ");
-				scanf("%d",&contact.iPhoneNum);
-				printf("Contact added to phone book\n\n");
+				scanf("%lli",&(aPhoneContact->lliPhoneNum));
+				printf("\nContact added to phone book\n\n");
 				break;
 				case 2:
 					printf("Nothing here for now");
 					break;
 					case 3: 
 						printf("Phone Book Entries:\n");
+						printf("%s %s %lli\n\n",aPhoneContact->scFirstName,aPhoneContact->scLastName,aPhoneContact->lliPhoneNum);
 						break;
 						case 4:
 							exiting();
